@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>hlsjs-iframe-slider-thumbnail</title>
+    <link rel="stylesheet" href="./demo.css" />
+  </head>
+  <body>
+    <header>
+      <h1><code>&lt;hlsjs-iframe-slider-thumbnail&gt;</code></h1>
+      <nav>
+        <a href="./" aria-current="page">Demo</a>
+        <a href="./advanced.html">Advanced</a>
+        <a href="./react.html">React</a>
+        <a href="./custom.html">Custom slider</a>
+        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail">GitHub</a>
+      </nav>
+    </header>
+    <p>
+      Scrub the time slider. Each preview is an I-frame decoded on demand from the stream's I-frame playlists by hls.js.
+    </p>
+
+    <video-player>
+      <video-skin>
+        <hlsjs-video
+          id="video"
+          src="https://pbs.github.io/test-streams/test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+          playsinline
+          muted
+          autoplay
+        ></hlsjs-video>
+        <hlsjs-iframe-slider-thumbnail id="thumbnail" slot="thumbnail"></hlsjs-iframe-slider-thumbnail>
+      </video-skin>
+    </video-player>
+
+    <section>
+      <h2>Code</h2>
+      <pre><code>&lt;video-player&gt;
+  &lt;video-skin&gt;
+    &lt;hlsjs-video src="https://example.com/master.m3u8" playsinline&gt;&lt;/hlsjs-video&gt;
+    &lt;hlsjs-iframe-slider-thumbnail slot="thumbnail"&gt;&lt;/hlsjs-iframe-slider-thumbnail&gt;
+  &lt;/video-skin&gt;
+&lt;/video-player&gt;
+
+&lt;script type="module"&gt;
+  import '@videojs/html/video/player';
+  import '@videojs/html/video/skin';
+  import '@videojs/html/media/hlsjs-video';
+  import 'videojs-hlsjs-iframe-thumbnail';
+&lt;/script&gt;</code></pre>
+    </section>
+
+    <footer>
+      Big Buck Bunny from <a href="https://test-streams.mux.dev/">test-streams.mux.dev</a>, with synthesized I-frame
+      playlists. hls.js <span id="hls-version"></span>.
+    </footer>
+
+    <script type="module">
+      import '@videojs/html/video/player';
+      import '@videojs/html/video/skin';
+      import '@videojs/html/media/hlsjs-video';
+      import 'videojs-hlsjs-iframe-thumbnail';
+      import Hls from 'hls.js';
+
+      document.getElementById('hls-version').textContent = Hls.version;
+    </script>
+  </body>
+</html>

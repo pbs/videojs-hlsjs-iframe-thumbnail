@@ -1,0 +1,81 @@
+{
+  "name": "videojs-hlsjs-iframe-thumbnail",
+  "version": "0.1.0",
+  "description": "Video.js 10 slider thumbnail rendered from the stream's HLS I-frame playlists with hls.js.",
+  "keywords": [
+    "custom-element",
+    "hls",
+    "hls.js",
+    "i-frame",
+    "iframe",
+    "preview",
+    "scrub",
+    "thumbnail",
+    "trick-play",
+    "video.js",
+    "videojs"
+  ],
+  "homepage": "https://pbs.github.io/videojs-hlsjs-iframe-thumbnail/",
+  "bugs": {
+    "url": "https://github.com/pbs/videojs-hlsjs-iframe-thumbnail/issues"
+  },
+  "license": "MIT",
+  "author": "PBS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pbs/videojs-hlsjs-iframe-thumbnail.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/index.js"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode library && tsc -p tsconfig.build.json",
+    "build:demo": "vite build",
+    "preview:demo": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint && oxfmt --check",
+    "format": "oxfmt",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@videojs/element": "^10.0.1",
+    "@videojs/hlsjs-video": "^10.0.1",
+    "@videojs/html": "^10.0.1",
+    "happy-dom": "^20.9.0",
+    "hls.js": "^1.7.3",
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.3",
+    "vitest": "^4.1.7"
+  },
+  "peerDependencies": {
+    "@videojs/element": "^10.0.0",
+    "@videojs/html": "^10.0.0",
+    "hls.js": ">=1.7.0"
+  },
+  "overrides": {
+    "hls.js": "$hls.js"
+  }
+}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>hlsjs-iframe-slider-thumbnail in a custom slider</title>
+    <link rel="stylesheet" href="./demo.css" />
+    <style>
+      media-container {
+        position: relative;
+        display: block;
+        background: #000;
+      }
+
+      media-container hlsjs-video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+
+      media-time-slider {
+        position: absolute;
+        right: 16px;
+        bottom: 12px;
+        left: 16px;
+        display: flex;
+        align-items: center;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      media-slider-track {
+        position: absolute;
+        right: 0;
+        left: 0;
+        height: 4px;
+        background: rgb(255 255 255 / 30%);
+      }
+
+      media-slider-buffer,
+      media-slider-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+      }
+
+      media-slider-buffer {
+        width: var(--media-slider-buffer);
+        background: rgb(255 255 255 / 40%);
+      }
+
+      media-slider-fill {
+        width: var(--media-slider-fill);
+        background: #fff;
+      }
+
+      /* Both follow the pointer and show while it is over the slider. */
+      hlsjs-iframe-slider-thumbnail,
+      media-slider-value {
+        position: absolute;
+        left: var(--media-slider-pointer);
+        opacity: 0;
+        transform: translateX(-50%);
+        transition: opacity 150ms ease;
+        pointer-events: none;
+      }
+
+      hlsjs-iframe-slider-thumbnail {
+        bottom: 100%;
+        width: 200px;
+        margin-bottom: 12px;
+        border: 1px solid rgb(255 255 255 / 40%);
+      }
+
+      media-slider-value {
+        bottom: calc(100% + 16px);
+        padding: 2px 6px;
+        font-size: 12px;
+        color: #fff;
+        background: rgb(0 0 0 / 70%);
+      }
+
+      media-time-slider[data-pointing] hlsjs-iframe-slider-thumbnail,
+      media-time-slider[data-pointing] media-slider-value {
+        opacity: 1;
+      }
+
+      /* No I-frame playlists in this stream: nothing to show. */
+      hlsjs-iframe-slider-thumbnail[data-hidden] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><code>&lt;hlsjs-iframe-slider-thumbnail&gt;</code> in a custom slider</h1>
+      <nav>
+        <a href="./">Demo</a>
+        <a href="./advanced.html">Advanced</a>
+        <a href="./react.html">React</a>
+        <a href="./custom.html" aria-current="page">Custom slider</a>
+        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail">GitHub</a>
+      </nav>
+    </header>
+    <p>
+      No skin: a <code>&lt;media-time-slider&gt;</code> built from parts, with the thumbnail positioned by the slider's
+      <code>--media-slider-pointer</code> variable.
+    </p>
+
+    <video-player>
+      <media-container>
+        <hlsjs-video
+          id="video"
+          src="https://pbs.github.io/test-streams/pbs/test-pattern/pbs-bars_hevc-avc.m3u8"
+          playsinline
+          muted
+          autoplay
+        ></hlsjs-video>
+        <media-time-slider>
+          <media-slider-track>
+            <media-slider-buffer></media-slider-buffer>
+            <media-slider-fill></media-slider-fill>
+          </media-slider-track>
+          <hlsjs-iframe-slider-thumbnail id="thumbnail"></hlsjs-iframe-slider-thumbnail>
+          <media-slider-value type="pointer"></media-slider-value>
+        </media-time-slider>
+      </media-container>
+    </video-player>
+
+    <script type="module">
+      import '@videojs/html/video/player';
+      import '@videojs/html/ui/container';
+      import '@videojs/html/ui/time-slider';
+      import '@videojs/html/ui/slider-track';
+      import '@videojs/html/ui/slider-buffer';
+      import '@videojs/html/ui/slider-fill';
+      import '@videojs/html/ui/slider-value';
+      import '@videojs/html/media/hlsjs-video';
+      import 'videojs-hlsjs-iframe-thumbnail';
+    </script>
+  </body>
+</html>

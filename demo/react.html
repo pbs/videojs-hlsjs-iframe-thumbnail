@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>hlsjs-iframe-slider-thumbnail in React</title>
+    <link rel="stylesheet" href="./demo.css" />
+  </head>
+  <body>
+    <header>
+      <h1><code>&lt;hlsjs-iframe-slider-thumbnail&gt;</code> in React</h1>
+      <nav>
+        <a href="./">Demo</a>
+        <a href="./advanced.html">Advanced</a>
+        <a href="./react.html" aria-current="page">React</a>
+        <a href="./custom.html">Custom slider</a>
+        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail">GitHub</a>
+      </nav>
+    </header>
+    <p>React 19 renders custom elements, Video.js's included, without a wrapper.</p>
+
+    <div id="root"></div>
+
+    <section>
+      <h2>Code</h2>
+      <pre><code>import '@videojs/html/video/player';
+import '@videojs/html/video/skin';
+import '@videojs/html/media/hlsjs-video';
+import 'videojs-hlsjs-iframe-thumbnail';
+
+export function Player() {
+  return (
+    &lt;video-player&gt;
+      &lt;video-skin&gt;
+        &lt;hlsjs-video src="https://example.com/master.m3u8" playsinline /&gt;
+        &lt;hlsjs-iframe-slider-thumbnail slot="thumbnail" /&gt;
+      &lt;/video-skin&gt;
+    &lt;/video-player&gt;
+  );
+}</code></pre>
+    </section>
+
+    <script type="module" src="./react.tsx"></script>
+  </body>
+</html>

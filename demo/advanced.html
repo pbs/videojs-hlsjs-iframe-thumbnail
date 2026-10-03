@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>hlsjs-iframe-slider-thumbnail advanced</title>
+    <link rel="stylesheet" href="./demo.css" />
+    <style>
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 16px;
+      }
+
+      select,
+      input,
+      button {
+        padding: 6px 10px;
+        font: inherit;
+        border: 1px solid #ccc;
+        background: #fff;
+      }
+
+      #preset {
+        max-width: 100%;
+      }
+
+      #url {
+        flex: 1;
+        min-width: 240px;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      button[type='submit'] {
+        color: #fff;
+        background: #111;
+        border-color: #111;
+      }
+
+      details {
+        flex-basis: 100%;
+        border: 1px solid #ddd;
+      }
+
+      summary {
+        padding: 6px 10px;
+        cursor: pointer;
+        background: #f6f6f6;
+      }
+
+      details[open] summary {
+        border-bottom: 1px solid #ddd;
+      }
+
+      summary span {
+        color: #777;
+      }
+
+      .drm {
+        display: grid;
+        grid-template-columns: max-content minmax(0, 1fr);
+        align-items: center;
+        gap: 8px 12px;
+        padding: 10px;
+      }
+
+      @media (max-width: 600px) {
+        .drm {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 4px;
+        }
+      }
+
+      .frame-time {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        padding: 1px 4px;
+        color: #fff;
+        background: rgb(0 0 0 / 70%);
+        font-size: 11px;
+      }
+
+      .frame-time:empty {
+        display: none;
+      }
+
+      .panels {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      @media (max-width: 800px) {
+        .panels {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .panel {
+        border: 1px solid #ddd;
+      }
+
+      .panel h2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px;
+        margin: 0;
+        padding: 6px 10px;
+        font-size: 13px;
+        font-weight: 600;
+        border-bottom: 1px solid #ddd;
+        background: #f6f6f6;
+      }
+
+      .panel h2 span {
+        font-weight: 400;
+        color: #777;
+      }
+
+      .panel h2 button {
+        padding: 0 6px;
+        font-size: 12px;
+      }
+
+      .panel-body {
+        max-height: 360px;
+        padding: 6px 10px;
+        overflow: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 2px 6px;
+        text-align: left;
+        white-space: nowrap;
+        border-bottom: 1px solid #eee;
+      }
+
+      th {
+        font-weight: 500;
+        color: #777;
+      }
+
+      tr[data-active] td {
+        font-weight: 600;
+      }
+
+      td.empty {
+        color: #999;
+      }
+
+      ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      ol li {
+        display: grid;
+        grid-template-columns: 13ch 24ch minmax(0, 1fr);
+        gap: 8px;
+        padding: 1px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      ol .time {
+        color: #999;
+      }
+
+      ol .name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      ol .name.error {
+        color: #b00;
+      }
+
+      ol .name.thumbnail {
+        color: #06c;
+      }
+
+      ol .data {
+        word-break: break-word;
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><code>&lt;hlsjs-iframe-slider-thumbnail&gt;</code> advanced</h1>
+      <nav>
+        <a href="./">Demo</a>
+        <a href="./advanced.html" aria-current="page">Advanced</a>
+        <a href="./react.html">React</a>
+        <a href="./custom.html">Custom slider</a>
+        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail">GitHub</a>
+      </nav>
+    </header>
+    <p>Load any HLS stream. The badge on the preview shows the presentation time of the frame on screen.</p>
+
+    <form id="load">
+      <select id="preset" aria-label="Preset stream"></select>
+      <input id="url" type="url" spellcheck="false" placeholder="https://example.com/master.m3u8" required />
+      <button type="submit">Load</button>
+      <details id="drm">
+        <summary>DRM <span id="drm-summary"></span></summary>
+        <div class="drm">
+          <label for="widevine-license">Widevine license</label>
+          <input id="widevine-license" type="url" spellcheck="false" placeholder="https://example.com/widevine" />
+          <label for="fairplay-license">FairPlay license</label>
+          <input id="fairplay-license" type="url" spellcheck="false" placeholder="https://example.com/fairplay" />
+          <label for="fairplay-certificate">FairPlay certificate</label>
+          <input
+            id="fairplay-certificate"
+            type="url"
+            spellcheck="false"
+            placeholder="https://example.com/fairplay.cer"
+          />
+        </div>
+      </details>
+    </form>
+
+    <video-player>
+      <video-skin>
+        <hlsjs-video id="video" playsinline muted autoplay></hlsjs-video>
+        <hlsjs-iframe-slider-thumbnail id="thumbnail" slot="thumbnail">
+          <span class="frame-time mono" id="frame-time"></span>
+        </hlsjs-iframe-slider-thumbnail>
+      </video-skin>
+    </video-player>
+
+    <section class="panels mono">
+      <div class="panel">
+        <h2>I-frame variants <span id="status"></span></h2>
+        <div class="panel-body">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Resolution</th>
+                <th>Bitrate</th>
+                <th>Codec</th>
+              </tr>
+            </thead>
+            <tbody id="variants"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Events <button type="button" id="clear">Clear</button></h2>
+        <div class="panel-body">
+          <ol id="log" reversed></ol>
+        </div>
+      </div>
+    </section>
+
+    <footer>hls.js <span id="hls-version"></span>.</footer>
+
+    <script type="module" src="./advanced.js"></script>
+  </body>
+</html>
