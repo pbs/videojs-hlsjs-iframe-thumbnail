@@ -1,7 +1,7 @@
 {
   "name": "videojs-hlsjs-iframe-thumbnail",
   "version": "0.1.0",
-  "description": "Video.js 10 slider thumbnail rendered from the stream's HLS I-frame playlists with hls.js.",
+  "description": "Video.js v10 slider thumbnail rendered from the stream's HLS I-frame playlists with hls.js.",
   "keywords": [
     "custom-element",
     "hls",
