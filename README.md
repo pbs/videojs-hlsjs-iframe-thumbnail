@@ -2,7 +2,7 @@
 
 `<hlsjs-iframe-slider-thumbnail>` is a [Video.js 10](https://videojs.org) slider thumbnail that shows previews from the
 stream's HLS I-frame playlists (`#EXT-X-I-FRAME-STREAM-INF`), decoded on demand by
-[hls.js](https://github.com/video-dev/hls.js). It needs no storyboard  / thumbnail VTT and works with live and DVR streams.
+[hls.js](https://github.com/video-dev/hls.js). It needs no storyboard / thumbnail VTT and works with live and DVR streams.
 
 ## Install
 
