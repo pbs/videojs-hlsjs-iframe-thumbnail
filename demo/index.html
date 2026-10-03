@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>hlsjs-iframe-slider-thumbnail</title>
+    <title>HLS I-frame thumbnails for Video.js v10</title>
+    <meta
+      name="description"
+      content="A Video.js v10 UI component that shows scrubbing previews from a stream's HLS I-frame playlists, decoded by hls.js."
+    />
     <link rel="stylesheet" href="./demo.css" />
   </head>
   <body>
@@ -14,12 +18,14 @@
         <a href="./advanced.html">Advanced</a>
         <a href="./react.html">React</a>
         <a href="./custom.html">Custom slider</a>
-        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail">GitHub</a>
+        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail">GitHub ↗</a>
       </nav>
     </header>
-    <p>
-      Scrub the time slider. Each preview is an I-frame decoded on demand from the stream's I-frame playlists by hls.js.
+    <p class="tagline">
+      A <a href="https://videojs.org">Video.js v10</a> UI component that shows scrubbing previews from a stream's HLS
+      I-frame playlists, decoded by hls.js.
     </p>
+    <p>Scrub the time slider.</p>
 
     <video-player>
       <video-skin>
@@ -49,6 +55,10 @@
   import '@videojs/html/media/hlsjs-video';
   import 'videojs-hlsjs-iframe-thumbnail';
 &lt;/script&gt;</code></pre>
+      <p>
+        Install steps, including the required hls.js 1.7 override, and the full API are in the
+        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail#install">README on GitHub</a>.
+      </p>
     </section>
 
     <footer>

@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>hlsjs-iframe-slider-thumbnail in React</title>
+    <title>React · HLS I-frame thumbnails for Video.js v10</title>
+    <meta
+      name="description"
+      content="A Video.js v10 UI component that shows scrubbing previews from a stream's HLS I-frame playlists, decoded by hls.js."
+    />
     <link rel="stylesheet" href="./demo.css" />
   </head>
   <body>
@@ -14,9 +18,13 @@
         <a href="./advanced.html">Advanced</a>
         <a href="./react.html" aria-current="page">React</a>
         <a href="./custom.html">Custom slider</a>
-        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail">GitHub</a>
+        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail">GitHub ↗</a>
       </nav>
     </header>
+    <p class="tagline">
+      A <a href="https://videojs.org">Video.js v10</a> UI component that shows scrubbing previews from a stream's HLS
+      I-frame playlists, decoded by hls.js.
+    </p>
     <p>React 19 renders custom elements, Video.js's included, without a wrapper.</p>
 
     <div id="root"></div>
@@ -38,6 +46,10 @@ export function Player() {
     &lt;/video-player&gt;
   );
 }</code></pre>
+      <p>
+        Install steps, including the required hls.js 1.7 override, and the full API are in the
+        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail#install">README on GitHub</a>.
+      </p>
     </section>
 
     <script type="module" src="./react.tsx"></script>
