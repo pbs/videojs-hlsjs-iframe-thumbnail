@@ -136,6 +136,34 @@
       </media-container>
     </video-player>
 
+    <section>
+      <h2>Code</h2>
+      <pre><code>&lt;media-time-slider&gt;
+  &lt;media-slider-track&gt;
+    &lt;media-slider-fill&gt;&lt;/media-slider-fill&gt;
+  &lt;/media-slider-track&gt;
+  &lt;hlsjs-iframe-slider-thumbnail&gt;&lt;/hlsjs-iframe-slider-thumbnail&gt;
+&lt;/media-time-slider&gt;</code></pre>
+      <pre><code>hlsjs-iframe-slider-thumbnail {
+  position: absolute;
+  bottom: 100%;
+  left: var(--media-slider-pointer);
+  width: 200px;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+media-time-slider[data-pointing] hlsjs-iframe-slider-thumbnail {
+  opacity: 1;
+}
+hlsjs-iframe-slider-thumbnail[data-hidden] {
+  display: none;
+}</code></pre>
+      <p>
+        Install steps, including the required hls.js 1.7 override, and the full API are in the
+        <a href="https://github.com/pbs/videojs-hlsjs-iframe-thumbnail#install">README on GitHub</a>.
+      </p>
+    </section>
+
     <script type="module">
       import '@videojs/html/video/player';
       import '@videojs/html/ui/container';

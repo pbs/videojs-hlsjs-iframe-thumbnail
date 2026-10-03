@@ -88,6 +88,7 @@ pre {
   background: #f6f6f6;
 }
 
+pre + pre,
 pre + p {
   margin-top: 8px;
 }
