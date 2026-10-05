@@ -1,6 +1,6 @@
-import { HlsJsIFrameSliderThumbnailElement } from './slider-thumbnail';
+import { HlsJsIFrameSliderThumbnailElement } from './slider-thumbnail.js';
 
-export type { IFramePlayer } from './iframe-player';
+export type { IFramePlayer } from './iframe-player.js';
 export { HlsJsIFrameSliderThumbnailElement };
 
 if (!customElements.get(HlsJsIFrameSliderThumbnailElement.tagName)) {

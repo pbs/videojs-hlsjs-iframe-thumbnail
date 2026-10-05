@@ -8,7 +8,7 @@ import {
   IFramePlayerController,
   isHlsJsMedia,
   isImageIFramePlayer,
-} from './iframe-player';
+} from './iframe-player.js';
 
 const SHADOW_CSS = `\
 :host {

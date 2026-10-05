@@ -1,6 +1,6 @@
 {
   "name": "videojs-hlsjs-iframe-thumbnail",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Video.js v10 slider thumbnail rendered from the stream's HLS I-frame playlists with hls.js.",
   "keywords": [
     "custom-element",
@@ -26,7 +26,9 @@
     "url": "git+https://github.com/pbs/videojs-hlsjs-iframe-thumbnail.git"
   },
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "!src/tests"
   ],
   "type": "module",
   "sideEffects": [
